@@ -387,3 +387,22 @@ p {
     width: 80px;
   }
 }
+@media (max-width: 600px) {
+  .section {
+    width: 90%;  /* almost full width on small screens */
+    padding: 15px;
+  }
+
+  .section h2 {
+    font-size: 1rem;
+  }
+
+  .section h3 {
+    font-size: 0.9rem;
+  }
+
+  .section img {
+    width: 60px;
+    height: 60px;
+  }
+}
