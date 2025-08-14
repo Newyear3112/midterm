@@ -283,4 +283,64 @@ mark {
   color: #fff;               /* white text */
   padding: 2px 4px;          /* optional padding */
   border-radius: 3px;        /* optional rounded corners */
+
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+.section-bg {
+  padding: 20px;
+}
+@media (min-width: 600px) {
+  .section-bg {
+    padding: 40px;
+  }
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* default one column for mobile */
+  gap: 20px;
+}
+
+@media (min-width: 600px) {
+  .action-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+p {
+  font-size: 1rem;
+}
+@media (min-width: 600px) {
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+  p { font-size: 1.1rem; }
+}
+.btn {
+  width: 100%;
+  text-align: center;
+}
+@media (min-width: 600px) {
+  .btn {
+    width: auto;
+  }
 }
