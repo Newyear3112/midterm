@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="icon.webp">
+<title>Dead by Daylight Board Game Guide</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.section-bg {
+  background: rgba(0,0,0,0.6);
+  padding: 40px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  color: #fff;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+/* Action card style for each prep step */
+.action-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.action-card h3 {
+  margin-top: 0;
+  color: #224cc0;
+}
+
+.action-card p {
+  line-height: 1.6;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+figcaption {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 20px 0;
+  background-color: #224cc0;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #3366ff;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="prep.html">Preparation</a>
+  <a href="gameplay.html">Gameplay</a>
+  <a href="survivor.html">Survivor Actions</a>
+  <a href="killer.html">Killer Actions</a>
+  <a href="credit.html">Credit</a>
+</nav>
+
+<section id="prep" class="section section-bg">
+  <h2>Preparation</h2>
+
+  <div class="action-card">
+    <h3>1. Identity Boards</h3>
+    <p>
+      Each player takes their character identity board, which includes name and difficulty level. 
+      Turn reference and blood point pool are also set: Survivors start at 2 (max 6), Killers start at 4 (max 12). 
+      Perks include name, blood point cost, condition text, and effect.
+    </p>
+    <img src="surboard.png" alt="Survivor board">
+    <img src="surboard2.png" alt="Survivor board 2">
+    <figcaption>Survivor identity boards</figcaption>
+
+    <p>
+      Killers have unique special powers; some also have passive abilities that activate throughout the game.
+    </p>
+    <img src="killerboard.png" alt="Killer board">
+    <img src="killerboard2.png" alt="Killer board 2">
+    <figcaption>Killer identity boards</figcaption>
+  </div>
+
+  <div class="action-card">
+    <h3>2. Setup Tokens and Movement Cards</h3>
+    <p>
+      Place a sacrifice progress token on each Survivor identity board. Give one Survivor the First Player marker. 
+      Each player takes a set of movement cards including Sneak, Sprint, Crouch, and Vault. The Killer also takes an additional Wait card.
+    </p>
+    <img src="movecard.png" alt="Movement cards">
+    <figcaption>Movement cards</figcaption>
+  </div>
+
+  <div class="action-card">
+    <h3>3. Choose the Game Board</h3>
+    <p>
+      Select the map for the trial: MacMillan Estates or Autohaven Wreckers.
+    </p>
+    <img src="map.png" alt="Game board">
+    <figcaption>Autohaven Wreckers</figcaption>
+  </div>
+
+  <div class="action-card">
+    <h3>4. Place Props and Items</h3>
+    <p>
+      Shuffle the props and place them face down on the board in designated rooms. Props come in four types: Objective, Boldness, Survival, and Altruism.
+      Each player rolls the skill check dice and places their figure in the matching space in turn order. Survivors reveal one prop of their choice. 
+      Place breakable walls on paths with distressed borders. Shuffle the item cards and place them in a face-down draw deck. Create a supply of tokens and dice nearby.
+    </p>
+    <img src="propmap.png" alt="Props on board">
+    <figcaption>Props</figcaption>
+    <img src="deckanddice.png" alt="Item deck and dice">
+    <figcaption>Item deck and dices</figcaption>
+  </div>
+
+  <a href="gameplay.html" class="btn">Gameplay Section</a>
+  
+</section>
+
+<footer>
+  This is a school project inspired by Dead by Daylight. Not an official website.
+</footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop">↑ Top</button>
+<audio id="bg-music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<div id="music-controls" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px; display: flex; align-items: center; gap: 10px; z-index: 1000;">
+  <button id="music-toggle">⏸️</button>
+  <input id="music-volume" type="range" min="0" max="1" step="0.01" value="0.2">
+</div>
+
+<script>
+  const btn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    btn.style.display = window.scrollY > 200 ? "block" : "none";
+  });
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  const overlay = document.getElementById("bg-overlay");
+  const fadeDistance = 400;
+  window.addEventListener("scroll", () => {
+    let opacity = window.scrollY / fadeDistance;
+    opacity = Math.max(0, Math.min(1, opacity));
+    overlay.style.opacity = opacity;
+  });
+
+  const nav = document.querySelector("nav");
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 50);
+  });
+  const music = document.getElementById('bg-music');
+const toggle = document.getElementById('music-toggle');
+const volumeSlider = document.getElementById('music-volume');
+
+// Initial volume
+music.volume = volumeSlider.value;
+
+// Toggle play/pause
+toggle.addEventListener('click', () => {
+  if(music.paused){
+    music.play();
+    toggle.textContent = '⏸️';
+  } else {
+    music.pause();
+    toggle.textContent = '▶️';
+  }
+});
+
+// Volume control
+volumeSlider.addEventListener('input', () => {
+  music.volume = volumeSlider.value;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="icon.webp">
+<title>Dead by Daylight Board Game Guide</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* Basic styling for section and action cards */
+/* Section background */
+.section-bg {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  color: #fff;
+}
+
+/* Instead of grid, just use a vertical stack */
+.action-grid {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  gap: 20px; /* spacing between each card */
+}
+
+/* Optional: limit card width and center them */
+.action-card {
+  min-width: 700px;
+  max-width: 700px;  /* adjust width */
+  margin: 0 auto;    /* center horizontally */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect: lift and shadow */
+.action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.action-card h3 {
+  margin-top: 0;
+  color: #224cc0; /* gold for titles */
+}
+
+.action-card p {
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="prep.html">Preparation</a>
+  <a href="gameplay.html">Gameplay</a>
+  <a href="survivor.html">Survivor Actions</a>
+  <a href="killer.html">Killer Actions</a>
+  <a href="credit.html">Credit</a>
+</nav>
+
+<section id="prep" class="section section-bg">
+  <h2>Survivor Actions</h2>
+  <div class="action-grid">
+
+  <div class="action-card">
+    <h3>1. Chest Prop</h3>
+    <p>
+      Rummaging through a chest allows the player to remove a token and draw a card from the Item Deck. 
+      Items have a name, use condition, effect, and a number of copies in the deck. 
+      A Survivor can hold only one item at a time.
+    </p>
+  </div>
+
+  <div class="action-card">
+    <h3>2. Locker Prop</h3>
+    <p>
+      Hide in a locker to be hidden from interaction and considered off the board for most game effects. 
+      Exception: if the Killer opens the locker.
+    </p>
+  </div>
+
+  <div class="action-card">
+    <h3>3. Crow Prop</h3>
+    <p>
+      Allows the Survivor to take a bonus turn at the cost of giving the Killer one Blood Point from the supply. 
+      On the bonus turn, the Survivor removes one Movement Card to move along the corresponding path. 
+      They may interact again after moving. 
+      Survivors can activate multiple bonus turns per round, but the Killer may only have one bonus turn per round.
+    </p>
+  </div>
+
+  <div class="action-card">
+    <h3>4. Pallet Prop</h3>
+    <p>Allows the Survivor to place the pallet onto a path to block it.</p>
+  </div>
+
+  <div class="action-card">
+    <h3>5. Generator Prop</h3>
+    <p>
+      The player performs a Skill Check (dice roll resulting in 1–5 or a failure). 
+      Any number except 5 = success; 5 = great success; failure = no success. 
+      Success: add 1 progress token. 
+      Great success: add 2 progress tokens. 
+      Failure: no tokens added. 
+      Once a generator has 3 progress tokens, it is considered complete and moved to the Progress Bar. 
+      Any failure gives the Killer 1 Blood Point.
+    </p>
+  </div>
+
+  <div class="action-card">
+    <h3>6. Gate Prop</h3>
+    <p>
+      Once all four generators are complete, the gates are powered. 
+      Survivors can perform a Skill Check to add a progress token to the gate. 
+      Once the gate reaches 3 progress tokens, it opens and Survivors win the game.
+    </p>
+  </div>
+
+  <div class="action-card">
+    <h3>7. Hook Prop</h3>
+    <p>
+      Survivors can sabotage by placing an Entity token on the hook for one round. 
+      If a Survivor is rescued while on a sabotaged hook, the active player gains 1 Blood Point. 
+      Both Survivors may move along any path once without a movement card.
+    </p>
+  </div>
+
+  <div class="action-card">
+    <h3>8. Totem Prop</h3>
+    <p>Survivors perform a Skill Check to remove the totem, gaining 2 Blood Points.</p>
+  </div>
+
+  <div class="action-card">
+    <h3>9. Heal Action</h3>
+    <p>
+      Requires no token or prop, but another wounded Survivor must be in the same space. 
+      The active Survivor rolls a Skill Check. Success removes the wound from the other figure.
+    </p>
+  </div>
+  </div>
+</section>
+
+<footer>
+  This is a school project inspired by Dead by Daylight. Not an official website.
+</footer>
+<!-- Back to Top Button -->
+<button id="backToTop">↑ Top</button>
+
+<audio id="bg-music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<div id="music-controls" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px; display: flex; align-items: center; gap: 10px; z-index: 1000;">
+  <button id="music-toggle">⏸️</button>
+  <input id="music-volume" type="range" min="0" max="1" step="0.01" value="0.2">
+</div>
+<script>
+  const btn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    btn.style.display = window.scrollY > 200 ? "block" : "none";
+  });
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  const overlay = document.getElementById("bg-overlay");
+  const fadeDistance = 400;
+  window.addEventListener("scroll", () => {
+    let opacity = window.scrollY / fadeDistance;
+    opacity = Math.max(0, Math.min(1, opacity));
+    overlay.style.opacity = opacity;
+  });
+
+  const nav = document.querySelector("nav");
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 50);
+  });
+  const music = document.getElementById('bg-music');
+const toggle = document.getElementById('music-toggle');
+const volumeSlider = document.getElementById('music-volume');
+
+// Initial volume
+music.volume = volumeSlider.value;
+
+// Toggle play/pause
+toggle.addEventListener('click', () => {
+  if(music.paused){
+    music.play();
+    toggle.textContent = '⏸️';
+  } else {
+    music.pause();
+    toggle.textContent = '▶️';
+  }
+});
+
+// Volume control
+volumeSlider.addEventListener('input', () => {
+  music.volume = volumeSlider.value;
+});
+</script>
+</body>
+</html>

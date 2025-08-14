@@ -1,0 +1,286 @@
+    body {
+    background-image: url("Dbdbg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+  }
+
+  /* Fading overlay */
+  #bg-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #1a1a1a;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0; /* start transparent */
+    transition: opacity 0.1s linear;
+  }
+
+  /* Page content stays above overlay */
+  #page {
+    position: relative;
+    z-index: 1;
+  }
+
+  header {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1px;
+    text-align: center;
+    top: 0;
+    transition: background-color 0.3s ease;
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+  }
+
+  nav {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    transition: background-color 0.3s ease;
+    backdrop-filter: blur(4px);
+    z-index: 10;
+  }
+  nav.scrolled {
+  background-color: rgba(0, 0, 0, 1); /* Fully solid when scrolling */
+  }
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+  }
+  nav a:hover {
+    color: #ff4444;
+  }
+
+  section {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    scroll-margin-top: 80px;
+  }
+
+  h2 {
+    color: rgb(255, 255, 255);
+  }
+
+  footer {
+    background-color: #222;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+    color: #aaa;
+  }
+
+  /* Back to Top button */
+  #backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #b91c1c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+  }
+  #backToTop:hover {
+    background-color: #ff4444;
+  }
+  .section-container {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .section {
+        flex: 1;
+        min-width: 300px;
+        padding: 50px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .killer {
+        background-color: #B30000; /* Red */
+    }
+
+    .survivor {
+        background-color: #1A4B9A; /* Blue */
+    }
+    .btn {
+        border: 2px solid white;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: black;
+    }
+    .play-option {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between icon and button */
+}
+
+
+.play-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap; /* makes it wrap nicely on small screens */
+}
+
+.play-title h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.play-title span {
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.icon-circle {
+    background-color: black;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.icon-circle img {
+    width: 70%;
+    height: auto;
+}
+/* Put the two cards in a balanced grid */
+.section-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  align-items: stretch;           /* make both columns the same height */
+}
+
+/* Make each card a 3-row grid: title | flexible text | button */
+.section{
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 200px;              /* same visual height */
+  padding: 56px 32px;
+  text-align: center;
+  align-items: center;            /* center content in each row */
+}
+
+/* Title + circle icon row */
+.play-title{
+  display: flex;
+  align-items: center;
+  justify-content: center;        /* keeps title+icon centered */
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: nowrap;
+}
+
+.play-title h2{
+  margin: 0;
+  line-height: 1.1;
+  font-size: 36px;
+  letter-spacing: 1px;
+}
+
+.play-title h2 span{
+  display: block;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+/* Circle icon size matches both cards */
+.icon-circle{
+  width: 80px;
+  height: 80px;
+  background: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.icon-circle img{
+  width: 70%;
+  height: auto;
+}
+
+/* Middle row text spacing (keeps symmetry) */
+.section p{
+  margin: 8px 0 0;
+}
+
+/* Button: same width, centered in last row */
+.btn{
+  justify-self: center;           /* centers in the card grid */
+  display: inline-block;
+  min-width: 260px;               /* consistent button width */
+  padding: 14px 24px;
+  border: 2px solid #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+/* Reusable section background for better readability */
+.section-bg {
+  background: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+  padding: 40px;
+  border-radius: 12px;           /* optional rounded corners */
+  backdrop-filter: blur(4px);    /* adds slight background blur */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: relative;
+  box-sizing: border-box; /* includes padding in width */
+}
+
+/* Optional: make text always white inside */
+.section-bg * {
+  color: #fff;
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+mark {
+  background-color: #b91c1c; /* dark red */
+  color: #fff;               /* white text */
+  padding: 2px 4px;          /* optional padding */
+  border-radius: 3px;        /* optional rounded corners */
+}

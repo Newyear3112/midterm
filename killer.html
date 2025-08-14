@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="icon.webp">
+<title>Dead by Daylight Board Game Guide</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* Basic styling for section and action cards */
+/* Section background */
+.section-bg {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  color: #fff;
+}
+
+/* Instead of grid, just use a vertical stack */
+.action-grid {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  gap: 20px; /* spacing between each card */
+}
+
+/* Optional: limit card width and center them */
+.action-card {
+  min-width: 700px;
+  max-width: 700px;  /* adjust width */
+  margin: 0 auto;    /* center horizontally */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect: lift and shadow */
+.action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.action-card h3 {
+  margin-top: 0;
+  color: #cb1818; /* gold for titles */
+}
+
+.action-card p {
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="prep.html">Preparation</a>
+  <a href="gameplay.html">Gameplay</a>
+  <a href="survivor.html">Survivor Actions</a>
+  <a href="killer.html">Killer Actions</a>
+  <a href="credit.html">Credit</a>
+</nav>
+
+<section id="prep" class="section section-bg">
+  <h2>Survivor Actions</h2>
+  <div class="action-grid">
+
+  <div class="action-card">
+    <h3>1. Search an Occupied Locker</h3>
+    <p>
+      Survivor rolls a Skill Check. Failure: picked up by Killer; success: locker removed.
+    </p>
+  </div>
+
+  <div class="action-card">
+    <h3>2. Scout with Crow Prop</h3>
+    <p>
+      Remove Crow Prop and gain 1 Blood Point.
+    </p>
+  </div>
+
+  <div class="action-card">
+    <h3>3. Damage a Generator</h3>
+    <p>
+      Remove all progress tokens.
+    </p>
+  </div>
+
+  <div class="action-card">
+    <h3>4. Venerate Totem</h3>
+    <p>Gain 2 Blood Points.</p>
+  </div>
+
+  <div class="action-card">
+    <h3>5. Attack a Survivor</h3>
+    <p>
+      Place a Wounded Ring below the figure.
+    </p>
+  </div>
+
+  <div class="action-card">
+    <h3>6. Pick Up</h3>
+    <p>
+      Can only pick up a Survivor not wounded this round.
+      If an unoccupied hook is in the space, the Survivor is sacrificed, and a progress token is added. 
+      If not, give the survivor 1-4 dice then carry the Survivor to another space corresponding to the dice <br><mark><b>[Example : give the survivor 2 dices mean can move 2 spaces]</b></mark><br> the survivor roll 1–4 dice. 
+      Survivor rolls a 5 (Great Success): escapes.
+      Any failure: Killer gains 1 Blood Point. Sacrificed Survivors skip their turn.
+    </p>
+  </div>
+  </div>
+</section>
+
+<footer>
+  This is a school project inspired by Dead by Daylight. Not an official website.
+</footer>
+<!-- Back to Top Button -->
+<button id="backToTop">↑ Top</button>
+
+<audio id="bg-music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<div id="music-controls" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px; display: flex; align-items: center; gap: 10px; z-index: 1000;">
+  <button id="music-toggle">⏸️</button>
+  <input id="music-volume" type="range" min="0" max="1" step="0.01" value="0.2">
+</div>
+
+<script>
+  const btn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    btn.style.display = window.scrollY > 200 ? "block" : "none";
+  });
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  const overlay = document.getElementById("bg-overlay");
+  const fadeDistance = 400;
+  window.addEventListener("scroll", () => {
+    let opacity = window.scrollY / fadeDistance;
+    opacity = Math.max(0, Math.min(1, opacity));
+    overlay.style.opacity = opacity;
+  });
+
+  const nav = document.querySelector("nav");
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 50);
+  });
+  const music = document.getElementById('bg-music');
+const toggle = document.getElementById('music-toggle');
+const volumeSlider = document.getElementById('music-volume');
+
+// Initial volume
+music.volume = volumeSlider.value;
+
+// Toggle play/pause
+toggle.addEventListener('click', () => {
+  if(music.paused){
+    music.play();
+    toggle.textContent = '⏸️';
+  } else {
+    music.pause();
+    toggle.textContent = '▶️';
+  }
+});
+
+// Volume control
+volumeSlider.addEventListener('input', () => {
+  music.volume = volumeSlider.value;
+});
+</script>
+</body>
+</html>

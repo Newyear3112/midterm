@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="icon.webp">
+<title>Dead by Daylight Board Game Guide</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* Section background */
+.section-bg {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  color: #fff;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 20px 0;
+  background-color: #224cc0;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #3366ff;
+}
+
+/* Headings */
+h2, h3 {
+  margin-top: 1.5em;
+}
+
+/* Paragraphs */
+p {
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="prep.html">Preparation</a>
+  <a href="gameplay.html">Gameplay</a>
+  <a href="survivor.html">Survivor Actions</a>
+  <a href="killer.html">Killer Actions</a>
+  <a href="credit.html">Credit</a>
+</nav>
+
+<section id="gameplay" class="section section-bg">
+  <h2>Gameplay</h2>
+  <p>Gameplay occurs in rounds. Each round is divided into four phases: 
+     <strong>1. Planning</strong>, <strong>2. Survivors Act</strong>, <strong>3. Killer Act</strong>, and <strong>4. Clean Up</strong>.</p>
+
+  <h3>Planning</h3>
+  <p>
+    During the Planning phase, each player selects and places one movement card face down in front of them. 
+    The Killer selects two movement cards and places them in a face-down row. 
+    Survivors may communicate, but all messages must be public and audible to the Killer.
+  </p>
+
+  <h3>Survivors Act</h3>
+  <p>
+    In turn order, starting with the Survivor holding the First Player marker, each Survivor takes their turn. 
+    The active player first reveals their movement card and moves their figure along a connected path matching the color of that path. 
+    <mark><b>Note: Yellow vault paths are one-way only.</b></mark>
+  </p>
+  <p>
+    If any props in the new space are face down, the Survivor may flip one face up. 
+    They then interact with one revealed prop in the space. 
+    <mark><b>All actions happen in this order: MOVE, then INTERACT.</b></mark>
+  </p>
+  <p>
+    If the revealed card has no legal moves, the player cannot interact with the prop that turn. 
+    Once all Survivors have completed their turns, the Killer acts.
+  </p>
+  <a href="survivor.html" class="btn">Survivor Actions</a>
+
+  <h3>Killer Act</h3>
+  <p>
+    The Killer follows a move → interact sequence. They start with their left movement card, then the right. 
+    The same rules that apply to Survivors also apply to the Killer. 
+    The Wait card allows the Killer to remain in the same space and interact with a prop. 
+    The Killer may use their special power once per round instead of interacting.
+  </p>
+  <p>
+    At the end of their second turn, the Killer may spend four Blood Points to set a third movement card and take another turn. 
+    The Killer may only take one bonus turn per round.
+  </p>
+  <a href="killer.html" class="btn">Killer Actions</a>
+
+  <h3>Clean Up</h3>
+  <p>
+    Once the Killer’s turn is complete, the Clean Up phase begins:
+  </p>
+  <ul>
+    <li>For each sacrificed Survivor, place a sacrifice token on the Sacrifice Progress Bar.</li>
+    <li>Remove the Entity token from the board.</li>
+    <li>Pass the First Player marker clockwise to the next Survivor.</li>
+    <li>All players return their movement cards to their hands and start a new round.</li>
+    <li>If Survivors open the exit gate before the Killer reaches eight sacrifice tokens, they win the game.</li>
+  </ul>
+</section>
+
+<footer>
+  This is a school project inspired by Dead by Daylight. Not an official website.
+</footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop">↑ Top</button>
+
+<audio id="bg-music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<div id="music-controls" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px; display: flex; align-items: center; gap: 10px; z-index: 1000;">
+  <button id="music-toggle">⏸️</button>
+  <input id="music-volume" type="range" min="0" max="1" step="0.01" value="0.2">
+</div>
+
+<script>
+  const btn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    btn.style.display = window.scrollY > 200 ? "block" : "none";
+  });
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  const overlay = document.getElementById("bg-overlay");
+  const fadeDistance = 400;
+  window.addEventListener("scroll", () => {
+    let opacity = window.scrollY / fadeDistance;
+    opacity = Math.max(0, Math.min(1, opacity));
+    overlay.style.opacity = opacity;
+  });
+
+  const nav = document.querySelector("nav");
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 50);
+  });
+  const music = document.getElementById('bg-music');
+const toggle = document.getElementById('music-toggle');
+const volumeSlider = document.getElementById('music-volume');
+
+// Initial volume
+music.volume = volumeSlider.value;
+
+// Toggle play/pause
+toggle.addEventListener('click', () => {
+  if(music.paused){
+    music.play();
+    toggle.textContent = '⏸️';
+  } else {
+    music.pause();
+    toggle.textContent = '▶️';
+  }
+});
+
+// Volume control
+volumeSlider.addEventListener('input', () => {
+  music.volume = volumeSlider.value;
+});
+</script>
+
+</body>
+</html>

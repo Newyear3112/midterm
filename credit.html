@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="icon.webp">
+<title>Dead by Daylight Board Game Guide</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="prep.html">Preparation</a>
+  <a href="gameplay.html">Gameplay</a>
+  <a href="survivor.html">Survivor Actions</a>
+  <a href="killer.html">Killer Actions</a>
+  <a href="credit.html">Credit</a>
+</nav>
+<section id="prep" class="section section-bg">
+  <h2>Credit</h2>
+  <h3>Video Credit And Reference</h3>
+  <a href="https://www.youtube.com/watch?v=3C76rQmeW9A" >How to Play Dead By Daylight: The Board Game</a>
+  <div class="video-container">
+  <iframe width="800" height="450" 
+          src="https://www.youtube.com/embed/3C76rQmeW9A" 
+          title="YouTube video" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+  </iframe>
+</div>
+    <h3>Picture Credit</h3>
+    <a href="https://www.payakarunboardgame.com/review/thai-license-boardgame/dead-by-daylight-th" target="_blank" rel="noopener noreferrer">Payak Arun <br>https://www.payakarunboardgame.com/review/thai-license-boardgame/dead-by-daylight-th</a>
+</section>
+<footer>
+  This is a school project inspired by Dead by Daylight. Not an official website.
+</footer>
+<audio id="bg-music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<div id="music-controls" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px; display: flex; align-items: center; gap: 10px; z-index: 1000;">
+  <button id="music-toggle">⏸️</button>
+  <input id="music-volume" type="range" min="0" max="1" step="0.01" value="0.2">
+</div>
+
+<script>
+  const btn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    btn.style.display = window.scrollY > 200 ? "block" : "none";
+  });
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  const overlay = document.getElementById("bg-overlay");
+  const fadeDistance = 400;
+  window.addEventListener("scroll", () => {
+    let opacity = window.scrollY / fadeDistance;
+    opacity = Math.max(0, Math.min(1, opacity));
+    overlay.style.opacity = opacity;
+  });
+
+  const nav = document.querySelector("nav");
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 50);
+  });
+  const music = document.getElementById('bg-music');
+const toggle = document.getElementById('music-toggle');
+const volumeSlider = document.getElementById('music-volume');
+
+// Initial volume
+music.volume = volumeSlider.value;
+
+// Toggle play/pause
+toggle.addEventListener('click', () => {
+  if(music.paused){
+    music.play();
+    toggle.textContent = '⏸️';
+  } else {
+    music.pause();
+    toggle.textContent = '▶️';
+  }
+});
+
+// Volume control
+volumeSlider.addEventListener('input', () => {
+  music.volume = volumeSlider.value;
+});
+</script>
+</body>
