@@ -344,3 +344,46 @@ p {
     width: auto;
   }
 }
+#backToTop {
+  position: fixed;
+  bottom: 80px; /* leave space above the volume slider */
+  right: 20px;
+  z-index: 1000;
+  display: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  background-color: #224cc0;
+  color: #fff;
+  cursor: pointer;
+}
+
+#music-controls {
+  position: fixed;
+  bottom: 20px; /* below back-to-top */
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,0,0,0.6);
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+@media (max-width: 480px) {
+  #backToTop {
+    bottom: 100px;
+    right: 10px;
+    padding: 8px 12px;
+  }
+
+  #music-controls {
+    bottom: 20px;
+    right: 10px;
+    padding: 6px 8px;
+    gap: 5px;
+  }
+
+  #music-volume {
+    width: 80px;
+  }
+}
