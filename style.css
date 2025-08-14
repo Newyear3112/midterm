@@ -45,6 +45,8 @@
     transition: background-color 0.3s ease;
     backdrop-filter: blur(4px);
     z-index: 10;
+    width: auto;
+    height: auto;
   }
   nav.scrolled {
   background-color: rgba(0, 0, 0, 1); /* Fully solid when scrolling */
@@ -404,5 +406,39 @@ p {
   .section img {
     width: 60px;
     height: 60px;
+  }
+}
+@media (max-width: 480px) {
+  .action-card {
+    padding: 15px;
+  }
+  .action-card h3 {
+    font-size: 1.1rem;
+  }
+  .action-card p {
+    font-size: 0.9rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+}
+@media (max-width: 600px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+@media (max-width: 480px) {
+  #backToTop {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  #music-controls {
+    bottom: 10px;
+    right: 10px;
+    padding: 8px;
   }
 }
